@@ -52,7 +52,7 @@ class Field
             switch (type)
             {
             case DataTypes::DB_TYPE_STRING:
-                return "DB_TYPE_UNKNOWN";
+                return "DB_TYPE_STRING";
                 break;
             case DataTypes::DB_TYPE_INTEGER:
                 return "DB_TYPE_INTEGER";

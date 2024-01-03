@@ -8,7 +8,8 @@ QueryResult::QueryResult(MYSQL_RES *result)
     MYSQL_FIELD *fields = mysql_fetch_fields(m_Result);
     for (size_t i = 0; i < m_FieldCount; i++)
     {
-        m_Fields.push_back(Field(fields[i].name, convertNativeType(fields[i].type)));
+        // m_Fields.push_back(Field(fields[i].name, convertNativeType(fields[i].type)));
+        m_Fields.emplace_back(fields[i].name, convertNativeType(fields[i].type));
     }
 
     m_RowCount = mysql_num_rows(m_Result);
@@ -18,7 +19,8 @@ QueryResult::QueryResult(MYSQL_RES *result)
     while (((row = mysql_fetch_row(m_Result)) != nullptr) && ((valueLengths = mysql_fetch_lengths(m_Result)) != nullptr))
     {
         // 将当前列中的每一列信息读出
-        m_Rows.push_back(Row(row, valueLengths, m_FieldCount));
+        // m_rows.push_back(row(row, valuelengths, m_fieldcount));
+        m_Rows.emplace_back(row, valueLengths, m_FieldCount);
     }
 }
 
