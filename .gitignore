@@ -1,1 +1,3 @@
 .vscode/**
+/mysqlapi/testdb.cc
+/mysqlapi/testdb
